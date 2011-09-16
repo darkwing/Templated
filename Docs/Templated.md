@@ -1,4 +1,4 @@
-Class: Templated {#Tempalted}
+Class: Templated {#Templated}
 =============================
 
 ### Notes:
@@ -17,67 +17,8 @@ Class: Templated {#Tempalted}
 * propertyMappings (*object*, defaults to null)  An object which contains custom property mappings for the widget.
 * defaultPropertyMappings (*object*, defaults to null)  An object with default, fallback property mappings for the widget.  Property mappings included ID, style, and class, which these properties are carried over from the base element to the domNode.
 
+### Progress Stub Methods:
 
-### Methods
-
-### enter
-
-* (*function*) Function to execute when the element's designated area is scrolled into.
-
-### Signature
-
-	onEnter(position, enters, event)
-	
-#### Arguments:
-
-1. position - (*object*) The container's scroll position object.
-2. enters - (*integer*) The number of times the scroll area has been entered.
-3. event - (*event*) The Event object from the main scroll event.
-
-
-### leave
-
-* (*function*) Function to execute when the element's designated area is scrolled out of.
-
-### Signature
-
-	onLeave(position, leaves, event)
-	
-#### Arguments:
-
-1. position - (*object*) The container's scroll position object.
-2. leaves - (*integer*) The number of times the scroll area has been left.
-3. event - (*event*) The Event object from the main scroll event.
-
-### scroll
-
-* (*function*) Function to execute on each scroll event.
-
-### Signature
-
-	onTick(position, inside, enters, leaves, event)
-	
-#### Arguments:
-
-1. position - (*object*) The container's scroll position object.
-2. inside - (*boolean*) Represents whether or not the scroll is within the designated min and max area.
-3. enters - (*integer*) The number of enters.
-4. leaves - (*integer*) The number of leaves.
-5. event - (*event*) The Event object from the main scroll event.
-
-
-### tick
-
-* (*function*) Function to execute on each scroll event when the scroll position is between the enter and exit.
-
-### Signature
-
-	onTick(position, inside, enters, leaves, event)
-	
-#### Arguments:
-
-1. position - (*object*) The container's scroll position object.
-2. inside - (*boolean*) Represents whether or not the scroll is within the designated min and max area.
-3. enters - (*integer*) The number of enters.
-4. leaves - (*integer*) The number of leaves.
-5. event - (*event*) The Event object from the main scroll event.
+* postMixInProperties: Fires after the options and widget properties have been mixed.
+* postCreate: Fires after the widget nodes have been create but before the nodes are placed into the DOM
+* startup:  Fires after the widget has been created and is placed into the DOM
