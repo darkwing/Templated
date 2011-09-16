@@ -1,0 +1,129 @@
+
+<!doctype html> 
+<html> 
+	<head> 
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+		<title>MooTools Templated</title> 
+		
+		<script src="../../mootools-core-1.3.2-full-nocompat.js"></script> 
+		<script src="../Source/Templated.js"></script> 
+		<script> 
+			// Create the first widget
+			var UIWidget = new Class({
+ 
+				// Implement the new Templated class
+				Implements: [Options, Templated],
+ 
+				// The UI template with attachpoints and attachevents
+				options: {
+					template: "<div class='UIWidget'>" + 
+								"<p>{message}</p>" +
+								"<input type='text' data-widget-attach-point='inputNode' data-widget-attach-event='keyup:onKeyUp,focus:onFocus' />" + 
+								"<div type='submit' data-widget-type='UIWidgetButton' data-widget-attach-point='buttonWidget,submitWidget' data-widget-attach-event='click:onSubmit' data-widget-props='label:\"My Prop Label\",somethingElse:true'></div>" + 
+							  "</div>",
+					uiwidgetOption: "here!"
+				},
+ 
+				// The magical constructor
+				initialize: function(options) {
+					this.debug("[widget]  Initialize");
+ 
+					// Set the options
+					this.setOptions(options);
+ 
+					// Parse the template
+					this.parse();
+				},
+ 
+				onKeyUp: function(evt) {
+					this.debug("[UIWidget]  onKeyUp method", this.inputNode.value);
+				},
+ 
+				onFocus: function() {
+					this.debug("[UIWidget]  onFocus method");
+				},
+ 
+				onSubmit: function(evt) {
+					evt.stop();
+					this.debug("[UIWidget]  onSubmit method ", evt);
+				},
+				
+				onMouseEnter: function() {
+					this.domNode.setStyle("background","pink");
+				},
+				
+				onMouseLeave: function() {
+					this.domNode.setStyle("background","lightblue");
+				}
+			});
+			
+ 
+			// Create a button widget
+			var UIWidgetButton = new Class({
+ 
+				// Implement the new Templated class
+				Implements: [Options, Templated],
+ 
+				// The UI template with attachpoints and attachevents
+				options: {
+					template: "<button class='UIWidgetButton' data-widget-attach-event='click:onClick'>{label}</button>",
+					uiwidgetOption: "here too!",
+					label: "Default Submit Option"
+				},
+ 
+				// The magical constructor
+				initialize: function(options) {
+					// Set the options
+					this.setOptions(options);
+					// Parse the template
+					this.parse();
+				},
+ 
+				// onClick
+				onClick: function(evt) {
+					evt.stop();
+					this.debug("[UIWidgetButton]  onclick method");
+				}
+			});
+ 
+ 
+			// Create an instance
+			window.addEvent("domready",function() {
+				
+				new UIWidget({
+					element: document.id("qHolder"),
+					message: "Please enter your email address and click the submit button"
+				});
+				
+				var widget3 = new UIWidget({
+					element: document.id("qHolder3"),
+					templateUrl: "../template-template.html",
+					title: "Hello Word!",
+					text: "We did it!"
+				});
+				
+				console.warn("widget3: ", widget3);
+				
+			});
+			
+		</script> 
+ 
+	</head> 
+ 
+	<body class="tundra" style="padding:20px;"> 
+		
+		<!-- Programmtic --> 
+		<div id="qHolder" class="UIWidgetInstance" style="background-color:pink"></div> 
+		
+		<!-- Declarative --> 
+		<div id="qHolder2" data-widget-type="UIWidget" data-widget-props="message:'This is the second widget!'" class="UIWidgetInstance2" style="background-color:lightblue"></div> 
+		<button onClick="document.body.parse();this.style.display='none';">Parse Body</button> 
+		
+		<!-- Programmatic with external template --> 
+		<div id="qHolder3"></div> 
+		
+		<!-- Declarative --> 
+		<div id="qHolder4" data-widget-type="UIWidgetDoesntExist" data-widget-props="message:'This is the second widget!'" class="UIWidgetInstance2" style="background-color:lightblue"></div> 
+		
+	</body> 
+</html>

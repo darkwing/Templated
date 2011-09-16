@@ -43,29 +43,41 @@ Attach points add element references to the class instance.  Attach events provi
 
 When the template should be parsed (usually after options have been merged via setOptions), call the this.parse() method:
 
-#JS
-var UIWidget = new Class({
+	#JS
+	var UIWidget = new Class({
 	
-	Implements: [Options, Templated]
+		Implements: [Options, Templated]
 	
-	// The UI template with attachpoints and attachevents
-	options: {
-		template: "<div class='UIWidget'>" + 
-					"<p>{message}</p>" +
-					"<input type='text' data-widget-attach-point='inputNode' data-widget-attach-event='keyup:onKeyUp,focus:onFocus' />" + 
-					"<div type='submit' data-widget-type='UIWidgetButton' data-widget-attach-point='buttonWidget,submitWidget' data-widget-attach-event='click:onSubmit' data-widget-props='label:\"My Prop Label\",somethingElse:true'></div>" + 
-				  "</div>",
-		uiwidgetOption: "here!"
-	},
+		// The UI template with attachpoints and attachevents
+		options: {
+			template: "<div class='UIWidget'>" + 
+						"<p>{message}</p>" +
+						"<input type='text' data-widget-attach-point='inputNode' data-widget-attach-event='keyup:onKeyUp,focus:onFocus' />" + 
+						"<div type='submit' data-widget-type='UIWidgetButton' data-widget-attach-point='buttonWidget,submitWidget' data-widget-attach-event='click:onSubmit' data-widget-props='label:\"My Prop Label\",somethingElse:true'></div>" + 
+					  "</div>",
+			uiwidgetOption: "here!"
+		},
 	
-	// Constructor
-	initialize: function(options) {
-		this.setOptions(options);
+		// Constructor
+		initialize: function(options) {
+			this.setOptions(options);
 		
-		// Parse the template, create nodes, find attach points and events
-		this.parse();
-	}
+			// Parse the template, create nodes, find attach points and events
+			this.parse();
+		}
 	
-});
+	});
 
 Once the template is parsed, attach points are available on the instance's object!
+
+
+Helpful Methods
+=========
+
+Templated provides stub methods along the way so code can be executed at different points within the creation of the widget:
+
+* postMixInProperties: Fires after the options and widget properties have been mixed.
+* postCreate: Fires after the widget nodes have been create but before the nodes are placed into the DOM
+* startup:  Fires after the widget has been created and is placed into the DOM
+
+These methods have proven to be useful within the Dojo Toolkit.
