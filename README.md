@@ -81,3 +81,6 @@ Templated provides stub methods along the way so code can be executed at differe
 * startup:  Fires after the widget has been created and is placed into the DOM
 
 These methods have proven to be useful within the Dojo Toolkit.
+
+
+![Screenshot](http://davidwalsh.name/dw-content/templated-screen.png)
