@@ -273,13 +273,13 @@
 			});
 
 			// Remove events
-			if(events && events.length) {
+			if(events.length) {
 				events.each(function(event) {
 					if(event.node) event.node.removeEvents();
 				});
 			}
 			// Remove node connections
-			if(points && points.length) {
+			if(points.length) {
 				points.each(function(point) {
 					if(point.name != "domNode") this[point.name] = null;
 				}, this);
