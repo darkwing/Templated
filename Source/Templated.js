@@ -1,3 +1,20 @@
+/*
+---
+description: Templated is a MooTools mixin class which creates elements for classes using a string-based HTML template which may included embedded attach points and events.
+
+license: MIT-style
+
+authors:
+- David Walsh
+
+requires:
+- MooTools Core
+
+provides: [Templated]
+
+...
+*/
+
 // Create scope limiter
 (function(scope) {
 	
@@ -375,7 +392,7 @@
 					new scope[klass]({ element: element });
 				}
 				else {
-					console.warn("klass does not exist!  ", klass);
+					window.console && console.log && console.log("klass does not exist!  ", klass);
 				}
 			};
 			
