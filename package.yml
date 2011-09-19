@@ -1,7 +1,7 @@
-name:  Templated
-author:  davidwalsh
-current:  0.12
-category:  Interface
-tags:  [ui, interface, class]
-docs:  http://davidwalsh.name/templated
-demo:  http://davidwalsh.name/templated
+name: Templated
+author: davidwalsh
+current: 0.12
+category: Interface
+tags: [ui, interface, class]
+docs: http://davidwalsh.name/templated
+demo: http://davidwalsh.name/templated

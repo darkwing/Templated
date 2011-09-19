@@ -8,7 +8,7 @@ authors:
 - David Walsh
 
 requires:
-- MooTools Core
+- core/1.3: '*'
 
 provides: [Templated]
 
